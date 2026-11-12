@@ -1,0 +1,39 @@
+media:
+  input: assets/img/posts      # 拖拽上传的图片存这里
+  output: /assets/img/posts    # 文中生成的引用路径
+
+content:
+  - name: posts
+    label: 博客文章
+    type: collection
+    path: _posts
+    format: yaml-frontmatter   # 生成 --- front matter --- + 正文
+    filename: "{year}-{month}-{day}-{primary}.md"   # 对齐 Jekyll 命名约定
+    view:
+      primary: title
+      sort: date
+      order: desc
+    fields:
+      - name: title
+        label: 标题
+        type: string
+      - name: date
+        label: 发布时间
+        type: date
+      - name: categories
+        label: 分类（最多两级）
+        type: string
+        list: true
+      - name: tags
+        label: 标签（小写）
+        type: string
+        list: true
+      - name: mermaid
+        label: 启用 Mermaid 图
+        type: boolean
+      - name: math
+        label: 启用数学公式
+        type: boolean
+      - name: body
+        label: 正文
+        type: rich-text
